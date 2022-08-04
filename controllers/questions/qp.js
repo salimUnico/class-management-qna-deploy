@@ -64,7 +64,7 @@ exports.updateQP = asyncHandler(async (req, res) => {
     }
     try {
         const QuestionPaperData = await QuestionPaper.findOneAndUpdate({ _id: id }, { ...qp }, { returnOriginal: false });
-        return res.status(201).json({ success: true, data: s });
+        return res.status(201).json({ success: true, data: QuestionPaperData});
     } catch (error) {
         throw new ErrorResponse(`Server error :${error}`, 400);
     }

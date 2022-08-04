@@ -12,14 +12,14 @@ exports.createQuestionAnswer = asyncHandler(async (req, res) => {
         qpid, question, ans, type, mcq
     };
     const validation = validationCheck({
-        qpid, question, ans, type,
+        qpid, question, type,
     });
     if (!validation.status) {
         throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
     }
     if (type == 'mcq') {
-        if (mcq.length !== 4) {
-            throw new ErrorResponse(`Please provide 4 mcqs only`, 400);
+        if (!(mcq.length > 1)) {
+            throw new ErrorResponse(`Please provide mcq options`, 400);
         }
     }
 
