@@ -47,6 +47,29 @@ exports.getSingleQP = asyncHandler(async (req, res) => {
     }
 })
 
+exports.updateQP = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const { subject, date, marks, } = req.body;
+    const qp = {
+        subject, date, marks,
+    };
+    const validation = validationCheck({
+        subject, date, marks,
+    });
+    if (!validation.status) {
+        throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
+    }
+    if (!id) {
+        throw new ErrorResponse(`Please provide id`, 400);
+    }
+    try {
+        const QuestionPaperData = await QuestionPaper.findOneAndUpdate({ _id: id }, { ...qp }, { returnOriginal: false });
+        return res.status(201).json({ success: true, data: s });
+    } catch (error) {
+        throw new ErrorResponse(`Server error :${error}`, 400);
+    }
+})
+
 exports.deleteQP = asyncHandler(async (req, res) => {
     const { id } = req.params;
     if (!id) {

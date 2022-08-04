@@ -59,6 +59,28 @@ exports.getSingleQA = asyncHandler(async (req, res) => {
     }
 })
 
+exports.updateQA = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const { question, ans, type, mcq } = req.body;
+    const qp = {
+        question, ans, type, mcq
+    };
+    const validation = validationCheck({
+        question, ans, type,
+    });
+    if (!validation.status) {
+        throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
+    }
+    if (!id) {
+        throw new ErrorResponse(`Please provide id`, 400);
+    }
+    try {
+        const QuestionAnswerData = await QuestionAnswer.findOneAndUpdate({ _id: id }, { ...qp }, { returnOriginal: false });
+        return res.status(201).json({ success: true, data: QuestionAnswerData });
+    } catch (error) {
+        throw new ErrorResponse(`Server error :${error}`, 400);
+    }
+})
 exports.deleteQA = asyncHandler(async (req, res) => {
     const { id } = req.params;
     if (!id) {
