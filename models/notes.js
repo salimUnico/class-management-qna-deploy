@@ -8,10 +8,19 @@ const noteScheme = new mongoose.Schema(
             trim: true,
         },
         json: [{
-          type:{
-            type: String, //title,subtitle,parah,addimg
+            type: {
+                type: String, //title,subtitle,parah,addimg
             },
-            value:{
+            value: {
+                type: String,
+            },
+            id: {
+                type: Number,
+            },
+            h: {
+                type: String,
+            },
+            w: {
                 type: String,
             }
         }]
