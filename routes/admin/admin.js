@@ -4,7 +4,7 @@ const router = express.Router();
 // controller 
 const UserRouter = require('./user');
 const QuestionRouter = require('./qp');
-const NotesRouter = require('./qp');
+const NotesRouter = require('./notes');
 
 router.use('/user', UserRouter);
 router.use('/question', QuestionRouter);

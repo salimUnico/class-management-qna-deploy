@@ -9,7 +9,7 @@ const noteScheme = new mongoose.Schema(
         },
         json: [{
           type:{
-            type: String, //title,subtitle,parah,img
+            type: String, //title,subtitle,parah,addimg
             },
             value:{
                 type: String,

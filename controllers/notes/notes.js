@@ -8,10 +8,10 @@ const Notes = require('../../models/notes');
 exports.createNotes = asyncHandler(async (req, res) => {
     const { name, json, } = req.body;
     const note = {
-        name, json,
+        name,
     };
     const validation = validationCheck({
-        name, json,
+        name,
     });
     if (!validation.status) {
         throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
@@ -27,7 +27,7 @@ exports.createNotes = asyncHandler(async (req, res) => {
 
 exports.getAllNotes = asyncHandler(async (req, res) => {
     try {
-        const NotesData = await Notes.find({ qpid: qp_id });
+        const NotesData = await Notes.find({ });
         return res.status(201).json({ success: true, data: NotesData });
     } catch (error) {
         throw new ErrorResponse(`Server error :${error}`, 400);

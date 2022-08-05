@@ -66,7 +66,7 @@ exports.updateQA = asyncHandler(async (req, res) => {
         question, ans, type, mcq
     };
     const validation = validationCheck({
-        question, ans, type,
+        question, type,
     });
     if (!validation.status) {
         throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
