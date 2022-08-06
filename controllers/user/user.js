@@ -61,7 +61,7 @@ exports.createNewUser = asyncHandler(async (req, res) => {
 exports.getAllUser = asyncHandler(async (req, res) => {
     try {
         const userData = await User.find({});
-        return res.status(200).json({ sucess: true, data: userData })
+        return res.status(200).json({ success: true, data: userData })
     } catch (error) {
         throw new ErrorResponse(`Server error :${error}`, 400);
     }
@@ -77,7 +77,7 @@ exports.getSingleUser = asyncHandler(async (req, res) => {
     }
     try {
         const userData = await User.findOne({ _id: id });
-        return res.status(200).json({ sucess: true, data: userData })
+        return res.status(200).json({ success: true, data: userData })
     } catch (error) {
         throw new ErrorResponse(`Server error :${error}`, 400);
 
@@ -94,7 +94,7 @@ exports.deleteUser = asyncHandler(async (req, res) => {
     }
     try {
         const userData = await User.deleteOne({ _id: id });
-        return res.status(200).json({ sucess: true, data: "User deleted successfully" })
+        return res.status(200).json({ success: true, data: "User deleted successfully" })
     } catch (error) {
         throw new ErrorResponse(`Server error :${error}`, 400);
     }
@@ -119,7 +119,7 @@ exports.updateUser = asyncHandler(async (req, res) => {
     }
     try {
         const userUpdatedData = await User.findOneAndUpdate({ _id: id }, userData, { returnOriginal: false });
-        return res.status(201).json({ sucess: true, data: userUpdatedData })
+        return res.status(201).json({ success: true, data: userUpdatedData })
     } catch (error) {
         throw new ErrorResponse(`Server error :${error}`, 400);
     }
