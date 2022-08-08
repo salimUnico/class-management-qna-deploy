@@ -236,7 +236,7 @@ exports.forgetPassword = asyncHandler(async (req, res) => {
         const subject = "Forget Password";
         const body = `
       <div>
-       Hey there!<br/> Did you request for a Forget password<br/> If yes, please  <a href="https://example.com/forget-password/${token}">click here for forget password</a>.<br/> If no? Please ignore this email.
+       Hey there!<br/> Did you request for a Forget password<br/> If yes, please  <a href="https://tpi-pdfcreator.vercel.app/forget-password/${token}">click here for forget password</a>.<br/> If no? Please ignore this email.
        </div>
       `;
         const to = [employeeData.email];
