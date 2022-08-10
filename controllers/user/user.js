@@ -223,6 +223,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
 */
 exports.forgetPassword = asyncHandler(async (req, res) => {
     const { email } = req.body;
+    console.log(req.body)
     const employeeData = await User.findOne({ email: email });
     if (!employeeData) {
         throw new ErrorResponse("Email not found", 404);
