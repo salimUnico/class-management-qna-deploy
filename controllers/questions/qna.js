@@ -6,10 +6,10 @@ const { validationCheck } = require('../../middleware/validationCheck');
 const QuestionAnswer = require('../../models/qna');
 
 exports.createQuestionAnswer = asyncHandler(async (req, res) => {
-    const { qpid, question, ans, type, mcq } = req.body;
+    const { qpid, question, ans, type, mcq, questionimage, answerimage } = req.body;
     //type : normal | mcq
     const qp = {
-        qpid, question, ans, type, mcq
+        qpid, question, ans, type, mcq, questionimage, answerimage
     };
     const validation = validationCheck({
         qpid, question, type,
@@ -61,9 +61,9 @@ exports.getSingleQA = asyncHandler(async (req, res) => {
 
 exports.updateQA = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const { question, ans, type, mcq } = req.body;
+    const { question, ans, type, mcq, questionimage, answerimage } = req.body;
     const qp = {
-        question, ans, type, mcq
+        question, ans, type, mcq, questionimage, answerimage
     };
     const validation = validationCheck({
         question, type,

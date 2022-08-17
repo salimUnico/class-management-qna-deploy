@@ -6,12 +6,12 @@ const { validationCheck } = require('../../middleware/validationCheck');
 const QuestionPaper = require('../../models/qp');
 
 exports.createQuestionPaper = asyncHandler(async (req, res) => {
-    const { name, subject, date, marks, } = req.body;
+    const { name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, } = req.body;
     const qp = {
-        name, subject, date, marks,
+        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks
     };
     const validation = validationCheck({
-        name, subject, date, marks,
+        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks
     });
     if (!validation.status) {
         throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
@@ -49,12 +49,12 @@ exports.getSingleQP = asyncHandler(async (req, res) => {
 
 exports.updateQP = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const { subject, date, marks, } = req.body;
+    const { name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks } = req.body;
     const qp = {
-        subject, date, marks,
+        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks
     };
     const validation = validationCheck({
-        subject, date, marks,
+        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks
     });
     if (!validation.status) {
         throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
@@ -64,7 +64,7 @@ exports.updateQP = asyncHandler(async (req, res) => {
     }
     try {
         const QuestionPaperData = await QuestionPaper.findOneAndUpdate({ _id: id }, { ...qp }, { returnOriginal: false });
-        return res.status(201).json({ success: true, data: QuestionPaperData});
+        return res.status(201).json({ success: true, data: QuestionPaperData });
     } catch (error) {
         throw new ErrorResponse(`Server error :${error}`, 400);
     }

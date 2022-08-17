@@ -12,9 +12,29 @@ const questionPaperScheme = new mongoose.Schema(
             require: [true, "Please provide subject name"],
             trim: true,
         },
-        date: {
+        bannerInstructionFirst: {
             type: String,
-            require: [true, "Please provide date"],
+            require: [true, "Please provide banner Instruction First"],
+            trim: true,
+        },
+        bannerInstructionSecond: {
+            type: String,
+            require: [true, "Please provide banner Instruction Second"],
+            trim: true,
+        },
+        tbc: {
+            type: String,
+            require: [true, "Please provide T.B.C"],
+            trim: true,
+        },
+        serialno: {
+            type: String,
+            require: [true, "Please provide Serial No"],
+            trim: true,
+        },
+        timeallowed: {
+            type: String,
+            require: [true, "Please provide Time allowed"],
             trim: true,
         },
         marks: {
