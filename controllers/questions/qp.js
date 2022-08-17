@@ -6,12 +6,12 @@ const { validationCheck } = require('../../middleware/validationCheck');
 const QuestionPaper = require('../../models/qp');
 
 exports.createQuestionPaper = asyncHandler(async (req, res) => {
-    const { name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, } = req.body;
+    const { name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries } = req.body;
     const qp = {
-        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks
+        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries
     };
     const validation = validationCheck({
-        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks
+        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries
     });
     if (!validation.status) {
         throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
@@ -49,9 +49,9 @@ exports.getSingleQP = asyncHandler(async (req, res) => {
 
 exports.updateQP = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const { name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks } = req.body;
+    const { name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries } = req.body;
     const qp = {
-        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks
+        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries
     };
     const validation = validationCheck({
         name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks

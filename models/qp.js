@@ -27,6 +27,11 @@ const questionPaperScheme = new mongoose.Schema(
             require: [true, "Please provide T.B.C"],
             trim: true,
         },
+        testbookletseries: {
+            type: String,
+            require: [true, "Please provide Test Booklet Series"],
+            trim: true,
+        },
         serialno: {
             type: String,
             require: [true, "Please provide Serial No"],
