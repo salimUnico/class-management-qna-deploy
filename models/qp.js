@@ -22,6 +22,11 @@ const questionPaperScheme = new mongoose.Schema(
             require: [true, "Please provide banner Instruction Second"],
             trim: true,
         },
+        bannerLabel: {
+            type: String,
+            require: [true, "Please provide banner Label"],
+            trim: true,
+        },
         tbc: {
             type: String,
             require: [true, "Please provide T.B.C"],
