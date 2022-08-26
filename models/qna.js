@@ -27,15 +27,23 @@ const questionAnswerScheme = new mongoose.Schema(
             type: String
         }],
         questionimage: {
-            type: String,
-            require: [false, "Please provide question image"],
-            trim: true,
+            height: Number,
+            width: Number,
+            url: {
+                type: String,
+                require: [false, "Please provide question image url"],
+                trim: true,
+            }
         },
         answerimage: {
-            type: String,
-            require: [false, "Please provide answer image"],
-            trim: true,
-        }
+            height: Number,
+            width: Number,
+            url: {
+                type: String,
+                require: [false, "Please provide answer image url"],
+                trim: true,
+            }
+        },
     },
     { timestamps: true }
 );

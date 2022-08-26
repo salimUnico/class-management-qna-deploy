@@ -9,8 +9,15 @@ exports.createQuestionAnswer = asyncHandler(async (req, res) => {
     const { qpid, question, ans, type, mcq, questionimage, answerimage } = req.body;
     //type : normal | mcq
     const qp = {
-        qpid, question, ans, type, mcq, questionimage, answerimage
+        qpid, question, ans, type, mcq, answerimage
     };
+    if(questionimage){
+        qp["questionimage"] = questionimage;
+    }
+    if(answerimage){
+        qp["answerimage"] = answerimage;
+    }
+
     const validation = validationCheck({
         qpid, question, type,
     });
@@ -63,8 +70,16 @@ exports.updateQA = asyncHandler(async (req, res) => {
     const { id } = req.params;
     const { question, ans, type, mcq, questionimage, answerimage } = req.body;
     const qp = {
-        question, ans, type, mcq, questionimage, answerimage
+        question, ans, type, mcq
     };
+    if(questionimage){
+        qp["questionimage"] = questionimage;
+    }
+    if(answerimage){
+        qp["answerimage"] = answerimage;
+    }
+
+
     const validation = validationCheck({
         question, type,
     });

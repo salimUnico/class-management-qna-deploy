@@ -54,7 +54,7 @@ exports.updateQP = asyncHandler(async (req, res) => {
         name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries, bannerLabel
     };
     const validation = validationCheck({
-        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks
+        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, bannerLabel
     });
     if (!validation.status) {
         throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
