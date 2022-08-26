@@ -11,7 +11,7 @@ exports.createQuestionPaper = asyncHandler(async (req, res) => {
         name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries
     };
     const validation = validationCheck({
-        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries
+        name, subject, marks,
     });
     if (!validation.status) {
         throw new ErrorResponse(`Please provide a ${validation?.errorAt}`, 400);
@@ -49,9 +49,9 @@ exports.getSingleQP = asyncHandler(async (req, res) => {
 
 exports.updateQP = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const { name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries } = req.body;
+    const { name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries, bannerLabel } = req.body;
     const qp = {
-        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries
+        name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks, testbookletseries, bannerLabel
     };
     const validation = validationCheck({
         name, subject, bannerInstructionFirst, bannerInstructionSecond, tbc, serialno, timeallowed, marks
